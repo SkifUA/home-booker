@@ -1,4 +1,4 @@
-<p class="text-xs-center">Войдите для работы</p>
+<p class="text-xs-center">Login for work</p>
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
   <div
     class="form-group"
@@ -9,7 +9,7 @@
       type="text"
       class="form-control underlined"
       id="email"
-      placeholder="Введите ваш email"
+      placeholder="email"
       formControlName="email"
     >
     <span
@@ -24,12 +24,12 @@
     class="form-group"
     [ngClass]="{'has-error': form.get('password').invalid && form.get('password').touched}"
   >
-    <label for="password">Пароль</label>
+    <label for="password">Password</label>
     <input
       type="password"
       class="form-control underlined"
       id="password"
-      placeholder="Пароль"
+      placeholder="Password"
       formControlName="password"
     >
     <span
@@ -56,7 +56,7 @@
   </div>
   <div class="form-group">
     <p class="text-muted text-xs-center">
-      Нет аккаунта? <a href="#">Зарегистрироваться!</a>
+      Don't have account? <a href="#">Registration!</a>
     </p>
   </div>
 </form>
