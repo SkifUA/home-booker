@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 import { UsersService } from '../../shared/services/users.service';
 import { User } from '../../shared/models/user.model';
@@ -20,19 +20,32 @@ export class LoginComponent implements OnInit {
   constructor(
     private usersService: UsersService,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit() {
+
     this.message = new Message('danger', '');
+
+    this.route.queryParams
+      .subscribe((params: Params) => {
+        if (params['nowCanLogin']) {
+          this.showMessage({
+            text: 'You can login now',
+            type: 'success'
+          });
+        }
+      });
+
     this.form = new FormGroup({
       'email': new FormControl(null, [Validators.required, Validators.email ]),
       'password': new FormControl(null, [Validators.required, Validators.minLength(5), Validators.maxLength(20)])
     });
   }
 
-  private showMessage(text: string, type: string = 'danger') {
-    this.message = new Message(type, text);
+  private showMessage(massage: Message) {
+    this.message = massage;
     window.setTimeout(() => {
       this.message.text = '';
     }, 5000);
@@ -50,10 +63,16 @@ export class LoginComponent implements OnInit {
             this.authService.login();
             // this.router.navigate('')
           } else {
-            this.showMessage('Error Email or Password!');
+            this.showMessage({
+              text: 'Error Email or Password!',
+              type: 'danger'
+            });
           }
         } else {
-          this.showMessage('This user not exist!');
+          this.showMessage({
+            text: 'This user not exist!',
+            type: 'danger'
+          });
         }
       });
   }
