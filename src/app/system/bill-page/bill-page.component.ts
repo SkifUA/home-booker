@@ -6,7 +6,6 @@ import { BillService } from '../shared/services/bill.service';
 import { Bill } from '../shared/models/bill.model';
 
 
-
 @Component({
   selector: 'hb-bill-page',
   templateUrl: './bill-page.component.html',
