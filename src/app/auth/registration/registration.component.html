@@ -18,6 +18,7 @@
     >
       <span *ngIf="form.get('email')['errors']['required']">Email can't be empty!</span>
       <span *ngIf="form.get('email')['errors']['email']">Email invalid!</span>
+      <span *ngIf="form.get('email')['errors']['forbiddenEmail']">This Email exist!</span>
     </span>
   </div>
   <div
