@@ -1,13 +1,13 @@
 <header class="header">
   <div class="header-block header-block-search">
-    {{ date | date:'dd:MM:yyyy'}}
+    {{date | date:'dd:MM:yyyy'}}
   </div>
   <div class="header-block header-block-nav">
     <ul class="nav-profile">
       <li class="profile dropdown" hbDropdown>
         <a class="nav-link dropdown-toggle" role="button">
           <span class="name">
-              Здравствуйте, Ирина
+              Hello, {{user.name}}
           </span>
         </a>
         <div class="dropdown-menu profile-dropdown-menu">
