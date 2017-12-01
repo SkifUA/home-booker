@@ -19,6 +19,8 @@ export class BillPageComponent implements OnInit, OnDestroy {
   currency: any;
   bill: Bill;
 
+  isLoaded = false;
+
   constructor(private billService: BillService) { }
 
   ngOnInit() {
@@ -28,13 +30,16 @@ export class BillPageComponent implements OnInit, OnDestroy {
     ).subscribe((data: [Bill, any]) => {
       this.bill = data[0];
       this.currency = data[1];
+      this.isLoaded = true;
     }) ;
   }
 
   onRefresh() {
+    this.isLoaded = false;
     this.sub2 = this.billService.getCurrency()
       .subscribe((currency: any) => {
         this.currency = currency;
+        this.isLoaded = true;
       });
   }
 

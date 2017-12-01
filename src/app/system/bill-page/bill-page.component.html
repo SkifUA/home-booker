@@ -9,8 +9,11 @@
   </div>
 </div>
 <section class="section">
-  <div class="row">
-   <hb-bill-card></hb-bill-card>
+  <div class="row text-center" *ngIf="!isLoaded">
+    Loaded...
+  </div>
+  <div class="row" *ngIf="isLoaded">
+   <hb-bill-card [bill]="bill" [currency]="currency"></hb-bill-card>
    <hb-currency-card></hb-currency-card>
   </div>
 </section>
