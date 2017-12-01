@@ -6,6 +6,7 @@ import { SystemRoutingModule } from './system-routing.module';
 import { BillPageComponent } from './bill-page/bill-page.component';
 import { HistoryPageComponent } from './history-page/history-page.component';
 import { PlaningPageComponent } from './planing-page/planing-page.component';
+import { RecordsPageComponent } from './records-page/records-page.component';
 
 
 
@@ -14,7 +15,8 @@ import { PlaningPageComponent } from './planing-page/planing-page.component';
   declarations: [
     BillPageComponent,
     HistoryPageComponent,
-    PlaningPageComponent
+    PlaningPageComponent,
+    RecordsPageComponent
   ]
 })
 
