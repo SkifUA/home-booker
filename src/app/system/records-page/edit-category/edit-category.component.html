@@ -12,7 +12,12 @@
           id="e-select-category"
           class="form-control"
         >
-          <option> 1 </option>
+          <option
+            *ngFor="let category of categories"
+            [value]="category.id"
+          >
+            {{category.name}}
+          </option>
         </select>
       </div>
       <div

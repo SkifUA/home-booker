@@ -14,12 +14,12 @@
       <hb-add-event></hb-add-event>
     </div>
     <div class="col-md-6">
-      <hb-add-category (onCAtegoryAdd)="newCategoryAdded($event)"></hb-add-category>
+      <hb-add-category (onCategoryAdd)="newCategoryAdded($event)"></hb-add-category>
     </div>
   </div>
   <div class="row">
     <div class="col-md-6">
-      <hb-edit-category></hb-edit-category>
+      <hb-edit-category [categories]="categories"></hb-edit-category>
     </div>
   </div>
 </section>
