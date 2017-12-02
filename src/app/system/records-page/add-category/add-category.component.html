@@ -1,3 +1,22 @@
-<p>
-  add-category works!
-</p>
+<div class="card">
+  <div class="card-header bordered">
+    <div class="header-block">
+      <h3 class="title">Add category</h3>
+    </div>
+  </div>
+  <div class="card-block">
+    <form>
+      <div class="form-group has-error">
+        <label class="control-label" for="category-name">Name</label>
+        <input type="text" id="category-name" class="form-control">
+        <span class="form-help-text">Error</span>
+      </div>
+      <div class="form-group has-success">
+        <label class="control-label" for="category-value">Limit</label>
+        <input type="number" value="0" id="category-value" class="form-control">
+        <span class="form-help-text">Without error</span>
+      </div>
+      <button type="submit" class="btn btn-primary">Add</button>
+    </form>
+  </div>
+</div>
