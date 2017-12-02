@@ -11,6 +11,9 @@
         <select
           id="e-select-category"
           class="form-control"
+          [(ngModel)]="currentCategoryId"
+          (change)="onCategoryChange()"
+          [ngModelOptions]="{standalone: true}"
         >
           <option
             *ngFor="let category of categories"
@@ -32,7 +35,7 @@
           required
           #name="ngModel"
           name="name"
-          ngModel
+          [ngModel]="currentCategory.name"
         >
         <span
           *ngIf="name.invalid && name.touched"
@@ -50,7 +53,7 @@
           type="number"
           id="e-category-value"
           class="form-control"
-          [ngModel]="1"
+          [ngModel]="currentCategory.capacity"
           name="capacity"
           #capacity="ngModel"
           required
