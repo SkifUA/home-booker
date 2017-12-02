@@ -19,7 +19,11 @@
   </div>
   <div class="row">
     <div class="col-md-6">
-      <hb-edit-category [categories]="categories"></hb-edit-category>
+      <hb-edit-category
+        [categories]="categories"
+        (onCategoryEdit)="categoryWasEdit($event)"
+      >
+      </hb-edit-category>
     </div>
   </div>
 </section>

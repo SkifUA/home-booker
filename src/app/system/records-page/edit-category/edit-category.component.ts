@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 import { Category } from '../../shared/models/category.model';
+import { CategoriesService } from '../../shared/services/categories.service';
 
 @Component({
   selector: 'hb-edit-category',
@@ -16,7 +17,9 @@ export class EditCategoryComponent implements OnInit {
   currentCategoryId = 1;
   currentCategory: Category;
 
-  constructor() { }
+  constructor(
+    private categoriesService: CategoriesService
+  ) { }
 
   onCategoryChange() {
     this.currentCategory = this.categories
@@ -28,6 +31,17 @@ export class EditCategoryComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
+    let { capacity, name } = form.value;
+    if (capacity < 0) {
+      capacity *= -1;
+    }
+
+    const category = new Category(name, capacity, +this.currentCategoryId);
+
+    this.categoriesService.updateCategory(category)
+      .subscribe((category: Category) => {
+        this.onCategoryEdit.emit(category);
+      });
 
   }
 
