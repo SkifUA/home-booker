@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 
 import { Category } from '../../shared/models/category.model';
 import { CategoriesService } from '../../shared/services/categories.service';
+import { Message } from '../../../shared/models/message.model';
 
 @Component({
   selector: 'hb-edit-category',
@@ -16,6 +17,7 @@ export class EditCategoryComponent implements OnInit {
 
   currentCategoryId = 1;
   currentCategory: Category;
+  message: Message;
 
   constructor(
     private categoriesService: CategoriesService
@@ -27,6 +29,7 @@ export class EditCategoryComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.message = new Message('success', '');
     this.onCategoryChange();
   }
 
@@ -41,6 +44,8 @@ export class EditCategoryComponent implements OnInit {
     this.categoriesService.updateCategory(category)
       .subscribe((category: Category) => {
         this.onCategoryEdit.emit(category);
+        this.message.text = 'Category successful updated';
+        window.setTimeout(() => this.message.text = '', 5000);
       });
 
   }
