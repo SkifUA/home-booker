@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+
+import { Category } from '../../shared/models/category.model';
 
 @Component({
   selector: 'hb-add-event',
@@ -7,9 +10,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddEventComponent implements OnInit {
 
+  @Input() categories: Category[] = [];
+  types = [
+    {type: 'income', label: 'Income'},
+    {type: 'outcome', label: 'Outcome'},
+  ]
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onSubmit(form: NgForm) {
+
   }
 
 }

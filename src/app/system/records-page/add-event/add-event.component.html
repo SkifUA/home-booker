@@ -5,36 +5,70 @@
     </div>
   </div>
   <div class="card-block">
-    <form>
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)">
       <div class="form-group">
-        <label class="control-label" for="category">Change Category</label>
-        <select class="form-control" id="category">
-          <option>Option one</option>
-          <option>Option two</option>
-          <option>Option three</option>
-          <option>Option four</option>
+        <label class="control-label" for="category">Choose Category</label>
+        <select
+          class="form-control"
+          id="category"
+          required
+          [ngModel]="1"
+          name="category"
+        >
+          <option
+            *ngFor="let c of categories"
+            [value]="c.id"
+          >
+            {{c.name}}
+          </option>
         </select>
       </div>
       <div class="form-group">
-        <label class="control-label">Change Type</label>
-        <div>
+        <label class="control-label">Choose Type</label>
+        <div *ngFor="let t of types">
           <label>
-            <input class="radio" name="radios" type="radio">
-            <span>Income</span>
+            <input
+              class="radio"
+              name="type"
+              type="radio"
+              [value]="t.type"
+              required
+              [ngModel]="'outcome'"
+            >
+            <span>{{t.Label}}</span>
           </label>
         </div>
-        <div>
-          <label>
-            <input class="radio" name="radios" type="radio" checked>
-            <span>Expense</span>
-          </label>
-        </div>
+
       </div>
-      <div class="form-group">
+      <div
+        class="form-group"
+        [ngClass]="{'has-error': amount.invalid && amount.touched}"
+      >
         <label class="control-label" for="amount">Enter amount</label>
-        <input type="number" value="0" id="amount" class="form-control">
+        <input
+          type="number"
+          id="amount"
+          class="form-control"
+          name="amount"
+          [ngModel]="1"
+          min="1"
+          #amount="ngModel"
+          required
+        >
+        <span
+          class="form-help-text"
+          *ngIf="amount.invalid && amount.touched"
+        >
+          Field must be present
+        </span>
       </div>
-      <button type="submit" class="btn btn-primary">Add</button>
+      <button
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="f.invalid"
+      >
+        Add
+      </button>
     </form>
   </div>
 </div>

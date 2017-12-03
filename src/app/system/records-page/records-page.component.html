@@ -11,10 +11,16 @@
 <section class="section" *ngIf="isLoaded">
   <div class="row">
     <div class="col-md-6">
-      <hb-add-event></hb-add-event>
+      <hb-add-event
+        [categories]="categories"
+      >
+      </hb-add-event>
     </div>
     <div class="col-md-6">
-      <hb-add-category (onCategoryAdd)="newCategoryAdded($event)"></hb-add-category>
+      <hb-add-category
+        (onCategoryAdd)="newCategoryAdded($event)"
+      >
+      </hb-add-category>
     </div>
   </div>
   <div class="row">
