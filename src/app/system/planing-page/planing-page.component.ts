@@ -1,15 +1,52 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { Subscription } from 'rxjs/Subscription';
+
+import { BillService } from '../shared/services/bill.service';
+import { CategoriesService } from '../shared/services/categories.service';
+import { EventsService } from '../shared/services/events.service';
+import { Bill } from '../shared/models/bill.model';
+import { Category } from '../shared/models/category.model';
+import { HBEvent } from '../shared/models/event.model';
+
 
 @Component({
   selector: 'hb-planing-page',
   templateUrl: './planing-page.component.html',
   styleUrls: ['./planing-page.component.scss']
 })
-export class PlaningPageComponent implements OnInit {
+export class PlaningPageComponent implements OnInit, OnDestroy {
 
-  constructor() { }
+  isLoaded = false;
+
+  sub1: Subscription;
+
+  bill: Bill;
+  categories: Category[] = [];
+  events: HBEvent[] = [];
+
+  constructor(
+    private billService: BillService,
+    private categoriesService: CategoriesService,
+    private eventsService: EventsService
+  ) { }
 
   ngOnInit() {
+    this.sub1 = Observable.combineLatest(
+      this.billService.getBill(),
+      this.categoriesService.getCategories(),
+      this.eventsService.getEvents()
+    ).subscribe((data: [Bill, Category[], HBEvent[]]) => {
+      this.bill = data[0];
+      this.categories = data[1];
+      this.events = data[2];
+
+      this.isLoaded = true;
+    });
+  }
+
+  ngOnDestroy() {
+    if (this.sub1) this.sub1.unsubscribe();
   }
 
 }
