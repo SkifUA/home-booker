@@ -5,6 +5,12 @@
     </div>
   </div>
   <div class="card-block">
+    <div
+      class="alert alert-{{message.type}}"
+      *ngIf="message.text"
+    >
+      {{message.text}}
+    </div>
     <form #f="ngForm" (ngSubmit)="onSubmit(f)">
       <div class="form-group">
         <label class="control-label" for="category">Choose Category</label>
@@ -74,7 +80,7 @@
           id="description-value"
           class="form-control"
           ngModel
-          name="capadescriptioncity"
+          name="description"
           #description="ngModel"
           required
         >
