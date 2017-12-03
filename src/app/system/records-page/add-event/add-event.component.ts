@@ -14,7 +14,7 @@ export class AddEventComponent implements OnInit {
   types = [
     {type: 'income', label: 'Income'},
     {type: 'outcome', label: 'Outcome'},
-  ]
+  ];
 
   constructor() { }
 
@@ -22,7 +22,7 @@ export class AddEventComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
-
+    console.log(form.value);
   }
 
 }
