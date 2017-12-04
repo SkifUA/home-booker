@@ -15,7 +15,7 @@
             <h3 class="title">Outcome</h3>
           </div>
           <h5 class="planning-expenses pull-right">
-            Bill: <span class="text-success">{{bill.value}}</span>
+            Bill: <span class="text-success">{{bill.value | number: '1.2'}}</span>
           </h5>
         </div>
         <div class="card-block">
@@ -23,17 +23,17 @@
             <div class="col-xs-6">
               <div class="n-progress">
                 <div class="progress-bar success" style="width: 30%;">
-                  <span>Name category</span>
+                  <span>{{c.name}}</span>
                 </div>
               </div>
             </div>
             <div class="col-xs-6">
               <p>
-                <span class="text-success">300.00</span>
+                <span class="text-success">{{getCategoryCost(c) | number: '1.2'}}</span>
                 from
-                <span class="text-primary">1000.00</span>
+                <span class="text-primary">{{c.capacity | number: '1.2'}}</span>
                 |
-                left <span class="text-success">700.00</span>
+                left <span class="text-success">{{c.capacity - getCategoryCost(c) | number: '1.2'}}</span>
               </p>
             </div>
           </div>

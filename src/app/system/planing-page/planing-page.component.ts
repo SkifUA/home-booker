@@ -45,6 +45,14 @@ export class PlaningPageComponent implements OnInit, OnDestroy {
     });
   }
 
+  getCategoryCost(category: Category): number {
+    const categoryEvents = this.events.filter(e => e.category === category.id && e.type === 'outcome');
+    return categoryEvents.reduce((total, e) => {
+      total += e.amount;
+      return total;
+    }, 0);
+  }
+
   ngOnDestroy() {
     if (this.sub1) this.sub1.unsubscribe();
   }
