@@ -22,18 +22,21 @@
           <div class="row" *ngFor="let c of categories">
             <div class="col-xs-6">
               <div class="n-progress">
-                <div class="progress-bar success" style="width: 30%;">
+                <div
+                  class="progress-bar {{getCategoryColor(c)}}"
+                  [ngStyle]="{width: getCategoryPercent(c)}"
+                >
                   <span>{{c.name}}</span>
                 </div>
               </div>
             </div>
             <div class="col-xs-6">
               <p>
-                <span class="text-success">{{getCategoryCost(c) | number: '1.2'}}</span>
+                <span class="text-{{getCategoryColor(c)}}">{{getCategoryCost(c) | number: '1.2'}}</span>
                 from
                 <span class="text-primary">{{c.capacity | number: '1.2'}}</span>
                 |
-                left <span class="text-success">{{c.capacity - getCategoryCost(c) | number: '1.2'}}</span>
+                left <span class="text-{{getCategoryColor(c)}}">{{c.capacity - getCategoryCost(c) | number: '1.2'}}</span>
               </p>
             </div>
           </div>

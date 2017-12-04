@@ -53,6 +53,20 @@ export class PlaningPageComponent implements OnInit, OnDestroy {
     }, 0);
   }
 
+  private getPercent(category: Category): number {
+    const percent = (100 * this.getCategoryCost(category)) / category.capacity;
+    return percent > 100 ? 100 : percent;
+  }
+
+  getCategoryPercent(category: Category): string {
+    return this.getPercent(category) + '%';
+  }
+
+  getCategoryColor(category: Category): string {
+    const percent = this.getPercent(category);
+    return percent < 60 ? 'success' : percent >= 100 ? 'danger' : 'warning';
+  }
+
   ngOnDestroy() {
     if (this.sub1) this.sub1.unsubscribe();
   }
