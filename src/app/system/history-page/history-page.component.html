@@ -1,14 +1,16 @@
-<!--CONTENT-->
-  <div class="title-block">
-    <h3 class="title">
-      Page history <span class="sparkline bar"></span>
-    </h3>
-  </div>
-  <hb-history-chart></hb-history-chart>
+
+<div class="title-block">
+  <h3 class="title">
+    Page history <span class="sparkline bar"></span>
+  </h3>
+</div>
+<div *ngIf="!isLoaded">
+  Loaded...
+</div>
+<div *ngIf="isLoaded">
+  <hb-history-chart [data]="chartData"></hb-history-chart>
 
   <hb-history-events></hb-history-events>
 
-<!--CONTENT-->
-<!--MODAL-->
-<hb-history-filter></hb-history-filter>
-<!--MODAL-->
+  <hb-history-filter></hb-history-filter>
+</div>Web developer
