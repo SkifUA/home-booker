@@ -1,24 +1,18 @@
 <section class="section">
   <div class="row">
-    <div class="col-md-12">
-      <div class="card">
-        <div class="card-block">
-          <section class="example">
-            <div>
-              <ngx-charts-pie-chart
-                [view]="view"
-                [results]="data"
-                [legend]="false"
-                [explodeSlices]="false"
-                [labels]="true"
-                [doughnut]="true"
-                [gradient]="gradient"
-              >
-              </ngx-charts-pie-chart>
-            </div>
-          </section>
-        </div>
-      </div>
+    <div class="col-md-12 text-center chart-center">
+
+      <ngx-charts-pie-chart
+        [view]="view"
+        [results]="data"
+        [legend]="false"
+        [explodeSlices]="false"
+        [labels]="true"
+        [doughnut]="true"
+        [gradient]="gradient"
+      >
+      </ngx-charts-pie-chart>
+
     </div>
   </div>
 </section>
