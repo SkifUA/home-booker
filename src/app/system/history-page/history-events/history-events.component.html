@@ -37,16 +37,19 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>44 444</td>
-              <td>12.12.2017</td>
-              <td>Products</td>
+            <tr *ngFor="let e of events; let idx = index">
+              <th scope="row">{{ idx + 1 }}</th>
+              <td>{{ e.amount | number:'1.2' }}</td>
+              <td>{{ e.date | hbMoment:'DD.MM.YYYY HH:mm:ss' }}</td>
+              <td>{{ e.catName }}</td>
               <td>
-                <span class="label label-danger">Outcome</span>
+                <span [ngClass]="getEventClass(e)">
+                  <span *ngIf="e.type === 'income'">Income</span>
+                  <span *ngIf="e.type === 'outcome'">Outcome</span>
+                </span>
               </td>
               <td class="text-lg-center">
-                <a href="#" class="btn btn-primary-outline">Open</a>
+                <a [routerLink]="['/system/history', e.id]" class="btn btn-primary-outline">Open</a>
               </td>
             </tr>
 

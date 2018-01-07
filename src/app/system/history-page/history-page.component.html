@@ -10,7 +10,12 @@
 <div *ngIf="isLoaded">
   <hb-history-chart [data]="chartData"></hb-history-chart>
 
-  <hb-history-events></hb-history-events>
+  <hb-history-events
+    [categories]="categories"
+    [events]="events"
+  >
+
+  </hb-history-events>
 
   <hb-history-filter></hb-history-filter>
 </div>Web developer
